@@ -1,0 +1,51 @@
+body
+  width: 100%
+  height: 10000px
+  margin: 0
+
+$bg-stripe-light: darken(#ff4cd2, 30%)
+$bg-stripe-dark: darken($bg-stripe-light, 15%)
+$bg-stripe-width: 20px
+$bg-dot-color: black //rgba(0, 0, 0, 0.7)
+$bg-dot-size: 6px
+$bg-dot-space: $bg-stripe-width
+.background
+  position: fixed
+  z-index: -9999
+  width: 100vw
+  height: 100vh
+  margin: 0
+  padding: 0
+  background: repeating-linear-gradient($bg-stripe-dark, $bg-stripe-dark $bg-stripe-width, $bg-stripe-light $bg-stripe-width, $bg-stripe-light $bg-stripe-width*2)
+
+  .page
+    z-index: -8990
+    height: 100%
+    margin: 0 auto
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    max-width: 750px
+    background-size: contain
+    background-position: center
+    background-repeat: no-repeat
+
+  .cover
+    z-index: -9000
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    position: absolute
+    background-image: radial-gradient($bg-dot-color $bg-dot-size, transparent $bg-dot-size+1px), radial-gradient($bg-dot-color $bg-dot-size, transparent $bg-dot-size+1px)
+    background-size: $bg-dot-space*2 $bg-dot-space*2
+    background-position: $bg-dot-space $bg-dot-space, $bg-dot-space*2 $bg-dot-space*2
+
+  .page-01
+    background-image: url("../img/risa-01.png")
+    opacity: 0.5
+  .page-02
+    background-image: url("../img/risa-02.png")
+    opacity: 0.5
