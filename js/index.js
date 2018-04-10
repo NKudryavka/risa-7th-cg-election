@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
       video.currentTime = Math.max(0, Math.min(newTime, video.duration-0.01));
     };
 
-    video.addEventListener('loadeddata', updateVideo);
+    video.addEventListener('loadeddata', () => {
+      video.panse();
+      updateVideo();
+      AOS.refresh();
+    });
 
     window.addEventListener('scroll', () => {
       if (Date.now() >= scrollFire + 100) {
