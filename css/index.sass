@@ -1,10 +1,9 @@
 @font-face
   font-family: nicoca
-  src: url('../font/nicoca_v1.ttf') format("truetype")
+  src: url('../font/nicoca_v1_subset.woff') format("woff")
 
 body
   width: 100%
-  padding-bottom: 200px
   margin: 0
   color: white
   font-family: nicoca
@@ -58,6 +57,51 @@ $bg-dot-space: $bg-stripe-width
     background-size: $bg-dot-space*2 $bg-dot-space*2
     background-position: $bg-dot-space $bg-dot-space, $bg-dot-space*2 $bg-dot-space*2
 
+.scroll-button
+  position: absolute
+  bottom: 50%
+  left: 50%
+  display: inline-block
+  transform: translate(0, 50%)
+  text-decoration: none
+  color: white
+
+  $scroll-button-size: 50px
+  $scroll-button-thickness: 2px
+  $scroll-button-animation-duration: 2s
+
+  span
+    position: absolute
+    top: 0
+    left: 50%
+    width: $scroll-button-size
+    height: $scroll-button-size
+    margin-left: -$scroll-button-size/2
+    border-left: $scroll-button-thickness solid white
+    border-bottom: $scroll-button-thickness solid white
+    transform: rotate(-45deg)
+    animation: sdb $scroll-button-animation-duration infinite
+    box-sizing: border-box
+
+    $scroll-button-arrow-space: $scroll-button-size
+    $scroll-button-arrow-delay: $scroll-button-animation-duration * 0.08
+    @for $i from 1 through 5
+      &:nth-of-type(#{$i})
+        top: calc(#{$scroll-button-arrow-space} * (#{$i} - 1))
+        animation-delay: calc(#{$scroll-button-arrow-delay} * (#{$i} - 1))
+
+  @keyframes sdb
+    0%
+      transform: rotate(-45deg) translate(0, 0)
+      opacity: 0
+    50%
+      opacity: 1
+    100%
+      transform: rotate(-45deg) translate(-20px, 20px)
+      opacity: 0
+
+
+$content-width: 100vh / 16 * 9
 .contents
   width: 100vh*9/16
   margin: 0 auto
@@ -65,50 +109,8 @@ $bg-dot-space: $bg-stripe-width
   .first
     width: 100%
     height: 100vh
-
     .scroll-button
-      position: absolute
-      bottom: 50%
-      left: 50%
-      display: inline-block
-      transform: translate(0, 50%)
-      text-decoration: none
       padding-top: 350px
-      color: white
-
-      $scroll-button-size: 50px
-      $scroll-button-thickness: 2px
-      $scroll-button-animation-duration: 2s
-
-      span
-        position: absolute
-        top: 0
-        left: 50%
-        width: $scroll-button-size
-        height: $scroll-button-size
-        margin-left: -$scroll-button-size/2
-        border-left: $scroll-button-thickness solid white
-        border-bottom: $scroll-button-thickness solid white
-        transform: rotate(-45deg)
-        animation: sdb $scroll-button-animation-duration infinite
-        box-sizing: border-box
-
-        $scroll-button-arrow-space: $scroll-button-size
-        $scroll-button-arrow-delay: $scroll-button-animation-duration * 0.08
-        @for $i from 1 through 5
-          &:nth-of-type(#{$i})
-            top: calc(#{$scroll-button-arrow-space} * (#{$i} - 1))
-            animation-delay: calc(#{$scroll-button-arrow-delay} * (#{$i} - 1))
-
-      @keyframes sdb
-        0%
-          transform: rotate(-45deg) translate(0, 0)
-          opacity: 0
-        50%
-          opacity: 1
-        100%
-          transform: rotate(-45deg) translate(-20px, 20px)
-          opacity: 0
 
   h1
     text-align: center
@@ -122,18 +124,30 @@ $bg-dot-space: $bg-stripe-width
     h3
       font-size: 3.5vh
     .box
-      width: 100vh*9/16*0.8
-      .unit-image-3
-        text-align: center
+      width: $content-width*0.8
+      .unit-image
+        text-align: justify
         img
           width: 14vh
+      .unit-image-4
+        img
+          margin-right: -5vh
+      .unit-image-5
+        img
+          margin-right: -7vh
 
     .momo-pear-berry
-      background: rgba($risa-color, 0.4)
+      background: rgba(255, 100, 100, 0.4)
     .sexy-panthers
       background: rgba(255, 200, 0, 0.4)
     .rough-and-fears
-      background: rgba(0, 0, 200, 0.4)
+      background: rgba(100, 0, 200, 0.4)
+    .oubutai
+      background: rgba(255, 200, 200, 0.6)
+    .melt-choco-pot
+      background: rgba(127, 74, 17, 0.4)
+    .sing-my-way
+      background: rgba(0, 0, 100, 0.4)
 
     .left
       float: left
@@ -142,5 +156,34 @@ $bg-dot-space: $bg-stripe-width
 
     .spacer
       height: 5vh
-      width: 100vh
+      width: $content-width
       float: left
+
+    .beat-shooter
+      width: $content-width
+      float: left
+      background: rgba(0, 150, 255, 0.5)
+      h3
+        text-align: center
+      .unit-image
+        text-align: center
+        img
+          width: 16vh
+
+  .mid-scroll
+    width: $content-width
+    height: 80px
+    position: relative
+    .scroll-button
+      padding-top: 120px
+
+  .last
+    height: 100vh
+    position: relative
+    font-size: 3vh
+    footer
+      background: rgba($risa-color, 0.6)
+      position: absolute
+      bottom: 0
+      margin-bottom: 0
+      text-align: center
