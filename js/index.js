@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     video.addEventListener('loadeddata', () => {
-      video.panse();
+      video.pause();
       updateVideo();
       AOS.refresh();
     });
