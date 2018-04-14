@@ -1,6 +1,10 @@
 import AOS from 'aos';
 
 document.addEventListener('DOMContentLoaded', () => {
+  if(navigator.userAgent.indexOf('iOS') < 0 && navigator.userAgent.indexOf('Android') < 0) {
+    document.getElementsByClassName('vote-button')[0].remove();
+  }
+
   AOS.init({
     duration: 1000,
     easing: 'ease-out-cubic'
