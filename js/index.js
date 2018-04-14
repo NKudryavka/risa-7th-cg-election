@@ -1,8 +1,11 @@
 import AOS from 'aos';
 
 document.addEventListener('DOMContentLoaded', () => {
+  let voteButton = document.getElementsByClassName('vote-button')[0];
   if(navigator.userAgent.indexOf('iOS') < 0 && navigator.userAgent.indexOf('Android') < 0) {
-    document.getElementsByClassName('vote-button')[0].remove();
+    voteButton.remove();
+  } else {
+    voteButton.href += Math.floor(Math.random() * 100000000);
   }
 
   AOS.init({
